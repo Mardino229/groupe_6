@@ -11,7 +11,7 @@ class Array:
     def __add__(self, other: Union['Array', int, float]) -> 'Array':
         if isinstance(other, Array):
             if self.shape != other.shape:
-                raise ValueError("Les formes des tableaux ne correspondent pas pour l'addition")
+                raise ValueError("Les dimensions des tableaux ne correspondent pas")
             if len(self.shape) == 2:
                 result = []
                 for i in range(self.shape[0]):
@@ -41,3 +41,172 @@ class Array:
                 return Array(result)
         else:
             raise TypeError("Type non supporté pour l'addition")
+
+    def __mul__(self, other: Union['Array', int, float])-> 'Array':
+        if isinstance(other, Array):
+            if len(self.shape) != len(other.shape):
+                raise ValueError("Les dimensions des tableaux ne correspondent pas")
+            if len(self.shape) == 2:
+                if len(self.data[0]) == len(other.data):
+                    result = []
+                    for i in range(self.shape[0]):
+                        row = []
+                        for j in range(other.shape[1]):
+                            res = 0
+                            for k in range (self.shape[1]):
+                                res = res + self.data[i][k] * other.data[k][j]
+                            row.append(res)
+                        result.append(row)
+                    return Array(result)
+                else :
+                   raise ValueError("La longueur des lignes et les colonnes  des tableaux ne correspondent pas pour la multiplication")
+            else:
+                result = []
+                for i in range(self.shape[0]):
+                    result.append(self.data[i] * other.data[i])
+                return Array(result)
+        elif isinstance(other, (int, float)):
+            if len(self.shape) == 2:
+                result = []
+                for i in range(self.shape[0]):
+                    row = []
+                    for j in range(self.shape[1]):
+                        row.append(self.data[i][j] * other)
+                    result.append(row)
+                return Array(result)
+            else:
+                result = []
+                for i in range(self.shape[0]):
+                    result.append(self.data[i] * other)
+                return Array(result)
+        else:
+            raise TypeError("Type non supporté pour la multiplication")
+
+    def __sub__(self, other: Union['Array', int, float]) -> 'Array':
+        if isinstance(other, Array):
+            if self.shape != other.shape:
+                raise ValueError("Les dimensions des tableaux ne correspondent pas")
+            if len(self.shape) == 2:
+                result = []
+                for i in range(self.shape[0]):
+                    row = []
+                    for j in range(self.shape[1]):
+                        row.append(self.data[i][j] - other.data[i][j])
+                    result.append(row)
+                return Array(result)
+            else:
+                result = []
+                for i in range(self.shape[0]):
+                    result.append(self.data[i] - other.data[i])
+                return Array(result)
+        elif isinstance(other, (int, float)):
+            if len(self.shape) == 2:
+                result = []
+                for i in range(self.shape[0]):
+                    row = []
+                    for j in range(self.shape[1]):
+                        row.append(self.data[i][j] - other)
+                    result.append(row)
+                return Array(result)
+            else:
+                result = []
+                for i in range(self.shape[0]):
+                    result.append(self.data[i] - other)
+                return Array(result)
+        else:
+            raise TypeError("Type non supporté pour la soustraction")
+
+    def __truediv__(self, other: Union['Array', int, float]) -> 'Array':
+        if isinstance(other, Array):
+            if 0 in other:
+                raise ZeroDivisionError("Division par zéro")
+            if self.shape != other.shape:
+                raise ValueError("Les dimensions des tableaux ne correspondent pas")
+            if len(self.shape) == 2:
+                result = []
+                for i in range(self.shape[0]):
+                    row = []
+                    for j in range(self.shape[1]):
+                        row.append(self.data[i][j] / other.data[i][j])
+                    result.append(row)
+                return Array(result)
+            else:
+                result = []
+                for i in range(self.shape[0]):
+                    result.append(self.data[i] / other.data[i])
+                return Array(result)
+        elif isinstance(other, (int, float)):
+            if len(self.shape) == 2:
+                result = []
+                for i in range(self.shape[0]):
+                    row = []
+                    for j in range(self.shape[1]):
+                        row.append(self.data[i][j] / other)
+                    result.append(row)
+                return Array(result)
+            else:
+                result = []
+                for i in range(self.shape[0]):
+                    result.append(self.data[i] / other)
+                return Array(result)
+        else:
+            raise TypeError("Type non supporté pour l'addition")
+
+    def __matmul__(self,other):
+        if isinstance(other, Array):
+            if len(self.shape) == 1 and len(other.shape) == 1:
+                rs = self*other
+                res = 0
+                for i in range(len(rs.data)):
+                    res = res + rs.data[i]
+                return res
+        else:
+            raise TypeError("Type non supporté pour le produit  scalaire")
+
+    def __contains__(self, data):
+        if isinstance(data, (int, float)):
+            if len(self.shape) == 2:
+                for row in self.data:
+                    if data in row:
+                        return True
+            else:
+                return data in self.data
+        else: 
+            raise TypeError("Type non supporté pour la recherche")
+    
+    def __getitem__(self, key):
+        # Gérez différents types d'index ici
+        if isinstance(key, int):
+            return self.data[key]
+        elif isinstance(key, slice):
+            return self.data[key.start : key.stop : key.step]
+        elif isinstance(key, tuple):
+            # Gérez les différents types d'index ici
+            if len(key) == 2:
+                row, col = key
+                if isinstance(row, int) and isinstance(col, int):
+                    return self.data[row][col]
+                elif isinstance(row, slice) and isinstance(col, int):
+                    return [row[col] for row in self.data[row]]
+                elif isinstance(row, int) and isinstance(col, slice):
+                    return self.data[row][col]
+                elif isinstance(row, slice) and isinstance(col, slice):
+                    return [[self.data[i][j] for j in range(*col.key(len(self.data[0])))]
+                            for i in range(*row.key(len(self.data)))]  
+                else:
+                    raise ValueError("Nombre d'indices incorrect")      
+        else:
+            raise TypeError("Type d'index non pris en charge")
+
+    def __repr__(self):
+        return f"{self.data}"
+
+
+a = Array([[1, 2, 3],[4, 5, 6],[7, 8, 9]])
+b = Array([[4, 5, 6],[1, 2, 3],[2, 1, 6]])
+c = a/b
+print(c)
+
+
+
+
