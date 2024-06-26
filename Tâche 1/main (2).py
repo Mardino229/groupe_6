@@ -44,8 +44,6 @@ class Array:
 
     def __mul__(self, other: Union['Array', int, float])-> 'Array':
         if isinstance(other, Array):
-            if len(self.shape) != len(other.shape):
-                raise ValueError("Les dimensions des tableaux ne correspondent pas")
             if len(self.shape) == 2:
                 if len(self.data[0]) == len(other.data):
                     result = []
@@ -202,9 +200,9 @@ class Array:
         return f"{self.data}"
 
 
-a = Array([[1, 2, 3],[4, 5, 6],[7, 8, 9]])
-b = Array([[4, 5, 6],[1, 2, 3],[2, 1, 6]])
-c = a/b
+a = Array([1,1])
+b = Array([[4, 5],[1, 2]])
+c = a*b
 print(c)
 
 
