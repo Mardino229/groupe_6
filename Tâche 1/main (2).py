@@ -59,10 +59,19 @@ class Array:
                 else :
                    raise ValueError("La longueur des lignes et les colonnes  des tableaux ne correspondent pas pour la multiplication")
             else:
-                result = []
-                for i in range(self.shape[0]):
-                    result.append(self.data[i] * other.data[i])
-                return Array(result)
+                if len(other.shape) == 2:
+                    if len(self.data) == len(other.data):
+                        result = []
+                        for i in range(len(self.data)):
+                            row = 0
+                            for j in range(len(other.data)):
+                                row = row + self.data[j] * other.data[j][i]
+                                print(row)
+                            result.append(row)
+                        return Array(result)
+                    else:
+                        raise ValueError("La longueur des lignes et les colonnes  des tableaux ne correspondent pas pour la multiplication")
+
         elif isinstance(other, (int, float)):
             if len(self.shape) == 2:
                 result = []
@@ -200,10 +209,21 @@ class Array:
         return f"{self.data}"
 
 
-a = Array([1,1])
-b = Array([[4, 5],[1, 2]])
+a = Array([1,1,2,3])
+b = Array([[4,5,1,0],[4,0,2,4],[1,9,2,5]])
 c = a*b
 print(c)
+
+# import numpy as np
+
+# A = np.array([1, 2])
+# B = np.array([5, 6])
+
+# result = np.dot(A, B)
+# result2=np.matmul(A,B)
+# print(result)
+# print(result2)
+
 
 
 
