@@ -11,6 +11,8 @@ packages = [
     "torch",
     "transformers",
     "Pillow"
+    "pandas"
+    "matplotlib"
 ]
 
 for package in packages:
