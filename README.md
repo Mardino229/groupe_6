@@ -45,6 +45,16 @@ Conclusion:
 
 Ce fichier offre une implémentation d'une classe Array avec des fonctionnalités de base pour les opérations mathématiques sur des tableaux multidimensionnels. Il est bien structuré, clair et facile à comprendre. Le code gère les erreurs et propose des commentaires explicatifs.
 
+Tâche 2 
+
+Voici l'analyse du graphe "Histogramme des nombres de chambres"
+
+#la plupart des propriétés dans le dataset ont 2 ou 3 chambres, avec un pic notable à 3 chambres (environ 300 propriétés). Les maisons avec moins de 2 chambres ou plus de 4 chambres sont beaucoup moins fréquentes.
+
+Voici l'analyse du graphe "Scatter Plot de Area vs Price"
+
+#Le nuage de points indique que, bien que la taille de la propriété soit un facteur important pour déterminer le prix, d'autres variables jouent également un rôle significatif. Les prix des propriétés peuvent varier considérablement pour des surfaces similaires, et quelques propriétés de luxe ou dans des zones premium montrent des prix particulièrement élevés.
+
 Tâche 3
 
 app.py est un programme simple qui utilise l'interface utilisateur tkinter pour créer un générateur d'images basique basé sur Stable Diffusion.
