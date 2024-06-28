@@ -47,34 +47,42 @@ class Array:
 
     def __mul__(self, other: Union['Array', int, float])-> 'Array':
         if isinstance(other, Array):
-            if len(self.shape) == 2:
-                if len(self.data[0]) == len(other.data):
-                    result = []
-                    for i in range(self.shape[0]):
-                        row = []
-                        for j in range(other.shape[1]):
-                            res = 0
-                            for k in range (self.shape[1]):
-                                res = res + self.data[i][k] * other.data[k][j]
-                            row.append(res)
-                        result.append(row)
-                    return Array(result)
-                else :
-                   raise ValueError("La longueur des lignes et les colonnes  des tableaux ne correspondent pas pour la multiplication")
-            else:
-                if len(other.shape) == 2:
-                    if len(self.data) == len(other.data):
+            if len(self.shape) == len(other.shape):
+                if len(self.shape) == 2:
+                    if len(self.data[0]) == len(other.data):
                         result = []
-                        for i in range(len(self.data)):
-                            row = 0
-                            for j in range(len(other.data)):
-                                row = row + self.data[j] * other.data[j][i]
-                                print(row)
+                        for i in range(self.shape[0]):
+                            row = []
+                            for j in range(other.shape[1]):
+                                res = 0
+                                for k in range (self.shape[1]):
+                                    res = res + self.data[i][k] * other.data[k][j]
+                                row.append(res)
                             result.append(row)
                         return Array(result)
+                    else :
+                        raise ValueError("La longueur des lignes et les colonnes  des matrices ne correspondent pas pour la multiplication")
+                elif len(self.shape) == 1:
+                    if len(self.data) == len(other.data):
+                        result = []
+                        for i in range(self.shape[0]):
+                            result.append(self.data[i] * other.data[i])
+                        return Array(result)
                     else:
-                        raise ValueError("La longueur des lignes et les colonnes  des tableaux ne correspondent pas pour la multiplication")
-
+                        raise ValueError("La longueur des lignes des matrices ne correspondent pas pour la multiplication")
+            elif len(other.shape) == 2:
+                if len(self.data) == len(other.data) == len(other.data[0]):
+                    result = []
+                    for i in range(len(self.data)):
+                        row = 0
+                        for j in range(len(other.data)):
+                            row = row + self.data[j] * other.data[j][i]
+                        result.append(row)
+                    return Array(result)
+                else:
+                    raise ValueError("La longueur des lignes et les colonnes  des tableaux ne correspondent pas pour la multiplication")
+            else:
+                raise ValueError("La longueur des lignes et les colonnes  des tableaux ne correspondent pas pour la multiplication")
         elif isinstance(other, (int, float)):
             if len(self.shape) == 2:
                 result = []
@@ -129,7 +137,7 @@ class Array:
     def __truediv__(self, other: Union['Array', int, float]) -> 'Array':
         if isinstance(other, Array):
             if 0 in other:
-                raise ZeroDivisionError("Division par zéro")
+                raise ZeroDivisionError("La division par zéro n'est pas possible ")
             if self.shape != other.shape:
                 raise ValueError("Les dimensions des tableaux ne correspondent pas")
             if len(self.shape) == 2:
@@ -147,7 +155,7 @@ class Array:
                 return Array(result)
         elif isinstance(other, (int, float)):
             if other == 0:
-                raise ZeroDivisionError("Division par zéro")
+                raise ZeroDivisionError("La division par zéro n'est pas possible")
             if len(self.shape) == 2:
                 result = []
                 for i in range(self.shape[0]):
@@ -214,3 +222,7 @@ class Array:
         return f"{self.data}"
 
 
+a = Array([0,7,4])
+b = Array([1,2,3])
+
+print(b/b)

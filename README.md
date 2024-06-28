@@ -134,14 +134,21 @@ Contribution en pourcentage:
 2.GBODO Chris Vianney Maoulé : 0%
 3.METODJO Toundé Jean-Joel : 8%
 4.DJOSSOU Will Sonagnon : 7%
-5.LAOUROU Adebola : 0%
+5.LAOUROU Adebola : 
 6.FAHOUBO Dossou Rodrigue : 
 7.TEHOUENOU Sèdégbé Gédéon Espamour : 10%
 8.DEGBEY Mahouna Baron Quiétude : 10%
 9.OKE Fèmi Michèl : 10%
 10.TCHEGNINOUGBO Sègbènou Hersuze Péniel : 7%
-11.DOSSA Oscar : 0%
+11.DOSSA Oscar : 
 
+Voici l'analyse du graphe "Histogramme des nombres de chambres"
+
+#la plupart des propriétés dans le dataset ont 2 ou 3 chambres, avec un pic notable à 3 chambres (environ 300 propriétés). Les maisons avec moins de 2 chambres ou plus de 4 chambres sont beaucoup moins fréquentes.
+
+Voici l'analyse du graphe "Scatter Plot de Area vs Price"
+
+#Le nuage de points indique que, bien que la taille de la propriété soit un facteur important pour déterminer le prix, d'autres variables jouent également un rôle significatif. Les prix des propriétés peuvent varier considérablement pour des surfaces similaires, et quelques propriétés de luxe ou dans des zones premium montrent des prix particulièrement élevés.
 
 
 
