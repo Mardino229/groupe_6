@@ -124,6 +124,7 @@ Opérations arithmétique et scalaire :
 
 Recherche d'éléments, Indexation et slicing : 
  -DASSI Maxime Mardino
+ -FAHOUBO Dossou Rodrigue
 
 Tâche 2:
 
@@ -140,12 +141,12 @@ Auteur: DASSI Maxime Mardino
 
 Contribution en pourcentage:
 
-1.DASSI Maxime Mardino : 23%
+1.DASSI Maxime Mardino : 21%
 2.GBODO Chris Vianney Maoulé : 
 3.METODJO Toundé Jean-Joel : 12%
 4.DJOSSOU Will Sonagnon : 11%
 5.LAOUROU Adebola : 
-6.FAHOUBO Dossou Rodrigue : 
+6.FAHOUBO Dossou Rodrigue : 2%
 7.TEHOUENOU Sèdégbé Gédéon Espamour : 12%
 8.DEGBEY Mahouna Baron Quiétude : 15%
 9.OKE Fèmi Michèl : 15%
