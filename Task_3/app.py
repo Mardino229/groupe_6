@@ -79,7 +79,7 @@ button.pack(pady=20)
 spinner_label = Label(frame, text="Aucun chargement en attente", font=("Helvetica", 15), bg='white')
 spinner_label.pack()
 
-canvas = Canvas(frame, width=width, height=height, bg='#4065A4', bd=0, highlightthickness=0)
+canvas = Canvas(frame, width=width, height=height, bg='black', bd=0, highlightthickness=0)
 canvas.pack()
 
 window.mainloop()
