@@ -220,9 +220,3 @@ class Array:
 
     def __repr__(self):
         return f"{self.data}"
-
-
-a = Array([0,7,4])
-b = Array([1,2,3])
-
-print(b/b)
