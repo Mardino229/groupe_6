@@ -8,6 +8,9 @@ class Array:
         else:
             self.shape = (len(data),)  # Tableau 1D
 
+    def __len__(self):
+        return len(self.data)
+
     def __add__(self, other: Union['Array', int, float]) -> 'Array':
         if isinstance(other, Array):
             if self.shape != other.shape:
@@ -143,6 +146,8 @@ class Array:
                     result.append(self.data[i] / other.data[i])
                 return Array(result)
         elif isinstance(other, (int, float)):
+            if other == 0:
+                raise ZeroDivisionError("Division par zéro")
             if len(self.shape) == 2:
                 result = []
                 for i in range(self.shape[0]):
@@ -157,7 +162,7 @@ class Array:
                     result.append(self.data[i] / other)
                 return Array(result)
         else:
-            raise TypeError("Type non supporté pour l'addition")
+            raise TypeError("Type non supporté pour la division")
 
     def __matmul__(self,other):
         if isinstance(other, Array):
@@ -167,6 +172,8 @@ class Array:
                 for i in range(len(rs.data)):
                     res = res + rs.data[i]
                 return res
+            else:
+                raise TypeError("Les deux tableaux doivent être 1D et de même longueur pour le produit scalaire.")
         else:
             raise TypeError("Type non supporté pour le produit  scalaire")
 
@@ -182,13 +189,11 @@ class Array:
             raise TypeError("Type non supporté pour la recherche")
     
     def __getitem__(self, key):
-        # Gérez différents types d'index ici
         if isinstance(key, int):
             return self.data[key]
         elif isinstance(key, slice):
             return self.data[key.start : key.stop : key.step]
         elif isinstance(key, tuple):
-            # Gérez les différents types d'index ici
             if len(key) == 2:
                 row, col = key
                 if isinstance(row, int) and isinstance(col, int):
@@ -207,24 +212,6 @@ class Array:
 
     def __repr__(self):
         return f"{self.data}"
-
-
-a = Array([1,1,2,3])
-b = Array([[4,5,1,0],[4,0,2,4],[1,9,2,5]])
-c = a*b
-print(c)
-
-# import numpy as np
-
-# A = np.array([1, 2])
-# B = np.array([5, 6])
-
-# result = np.dot(A, B)
-# result2=np.matmul(A,B)
-# print(result)
-# print(result2)
-
-
 
 
 
