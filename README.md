@@ -130,16 +130,16 @@ Auteur: DASSI Maxime Mardino
 
 Contribution en pourcentage:
 
-1.DASSI Maxime Mardino : 10%
-2.GBODO Chris Vianney Maoulé : 0%
-3.METODJO Toundé Jean-Joel : 8%
-4.DJOSSOU Will Sonagnon : 7%
+1.DASSI Maxime Mardino : 23%
+2.GBODO Chris Vianney Maoulé : 
+3.METODJO Toundé Jean-Joel : 12%
+4.DJOSSOU Will Sonagnon : 11%
 5.LAOUROU Adebola : 
 6.FAHOUBO Dossou Rodrigue : 
-7.TEHOUENOU Sèdégbé Gédéon Espamour : 10%
-8.DEGBEY Mahouna Baron Quiétude : 10%
-9.OKE Fèmi Michèl : 10%
-10.TCHEGNINOUGBO Sègbènou Hersuze Péniel : 7%
+7.TEHOUENOU Sèdégbé Gédéon Espamour : 12%
+8.DEGBEY Mahouna Baron Quiétude : 15%
+9.OKE Fèmi Michèl : 15%
+10.TCHEGNINOUGBO Sègbènou Hersuze Péniel : 12%
 11.DOSSA Oscar : 
 
 Voici l'analyse du graphe "Histogramme des nombres de chambres"
